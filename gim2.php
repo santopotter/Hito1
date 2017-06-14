@@ -28,6 +28,25 @@
 
 <body>
 
+<?php
+	
+		$con = mysqli_connect("localhost", "nuevito","1234", "fis");
+		#var_dump($con);
+		$result = mysqli_query($con,"SELECT * FROM canchas WHERE id_gym = 2");
+		
+		
+		while($row = mysqli_fetch_array($result)){
+			
+			$a[]= $row["Nombre"];
+			$b[]= $row["Precio"];
+		
+		}
+		
+		
+		mysqli_close($con);	
+	?>
+
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -39,7 +58,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="front.html"><span class="glyphicon glyphicon-chevron-left"></span>Atras</a>
+                <a class="navbar-brand" href="front.php"><span class="glyphicon glyphicon-chevron-left"></span>Atras</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <!-- /.navbar-collapse -->
@@ -99,9 +118,9 @@
                             <img src="http://lpp.mx/wp-content/uploads/2014/11/pezcharco.jpg" alt="">
                             <div class="caption">
                          
-                                <h4><p>Piscina Olimpica</p>
+                                <h4><p><?php echo $a[0]?></p>
                                 </h4>
-                                <p>$20.000</p>
+                                <p>$ <?php echo $b[0]?> CLP</p>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Horario</button>
 
 				<!-- Modal -->
@@ -112,7 +131,7 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Piscina Olimpica</h4>
+					<h4 class="modal-title"><?php echo $a[0]?></h4>
 				      </div>
 				      <div class="modal-body">
 

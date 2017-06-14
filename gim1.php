@@ -28,6 +28,24 @@
 
 <body>
 
+<?php
+	
+		$con = mysqli_connect("localhost", "nuevito","1234", "fis");
+		#var_dump($con);
+		$result = mysqli_query($con,"SELECT * FROM canchas WHERE id_gym = 1");
+		
+		
+		while($row = mysqli_fetch_array($result)){
+			
+			$a[]= $row["Nombre"];
+			$b[]= $row["Precio"];
+		
+		}
+		
+		
+		mysqli_close($con);	
+	?>
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -39,7 +57,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="front.html"><span class="glyphicon glyphicon-chevron-left"></span>Atras</a>
+                <a class="navbar-brand" href="front.php"><span class="glyphicon glyphicon-chevron-left"></span>Atras</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <!-- /.navbar-collapse -->
@@ -98,9 +116,9 @@
                         <div class="thumbnail">
                             <img src="img/google.jpg" alt="">
                             <div class="caption">
-                                <h4><p>Cancha de Futbol N°1</p>
+                                <h4><p><?php echo $a[0]?></p>
                                 </h4>
-                                <p>$10.000 CLP</p>
+                                <p>$ <?php echo $b[0]?> CLP</p>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Horario</button>
 
 				<!-- Modal -->
@@ -111,7 +129,7 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Cancha de Futbol N°1</h4>
+					<h4 class="modal-title"><?php echo $a[0]?></h4>
 				      </div>
 				      <div class="modal-body">
 
@@ -205,9 +223,9 @@
                             <img src="img/excelente.jpg" alt="">
                             <div class="caption">
                                 
-                                <h4><p>Cancha de Futbol N°2</p>
+                                <h4><p><?php echo $a[1]?></p>
                                 </h4>
-                                <p>$15.000 CLP</p>
+                                <p>$<?php echo $b[1]?> CLP</p>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Horario</button>
 
 				<!-- Modal -->
@@ -218,7 +236,7 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal2">&times;</button>
-					<h4 class="modal-title">Cancha de Futbol N°2</h4>
+					<h4 class="modal-title"><?php echo $a[1]?></h4>
 				      </div>
 				      <div class="modal-body">
 

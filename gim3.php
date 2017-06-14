@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Gimnasio NBA</title>
+    <title>Gimnasio Massu</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,6 +28,23 @@
 
 <body>
 
+<?php
+	
+		$con = mysqli_connect("localhost", "nuevito","1234", "fis");
+		#var_dump($con);
+		$result = mysqli_query($con,"SELECT * FROM canchas WHERE id_gym = 3");
+		
+		
+		while($row = mysqli_fetch_array($result)){
+			
+			$a[]= $row["Nombre"];
+			$b[]= $row["Precio"];
+		
+		}
+		
+		
+		mysqli_close($con);	
+	?>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -39,7 +56,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="front.html"><span class="glyphicon glyphicon-chevron-left"></span>Atras</a>
+                <a class="navbar-brand" href="front.php"><span class="glyphicon glyphicon-chevron-left"></span>Atras</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <!-- /.navbar-collapse -->
@@ -53,7 +70,7 @@
         <div class="row">
 
             <div class="col-md-9">
-                <p class="lead">Gimnasio NBA</p>
+                <p class="lead">Gimnasio Massu</p>
             </div>
 
             <div class="col-md-9">
@@ -69,13 +86,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://www.hirbaja.com/imageslider/cima/slider10.jpg" alt="">
+                                    <img class="slide-image" src="img/carousel1.jpg" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="img/image39007.jpg" alt="">
+                                    <img class="slide-image" src="img/carousel2.jpg" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="img/IMG_3302.jpg" alt="">
+                                    <img class="slide-image" src="img/carousel3.jpg" alt="">
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -87,7 +104,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                		<h4>Hay 4 canchas en total: 2 de voleibol techadas, dentro de una infraestructura nueva y 2 de basquetbol, una de ellas techada y la otra al aire libre.</h4>
+                		<h4>Cuenta con 4 canchas de tenis: de arcilla, pasto artifical, pasto real y asfalto.</h4>
            			</div>
 
                 </div>
@@ -96,12 +113,11 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="img/Cancha.jpg" alt="">
+                            <img src="img/3.jpg" alt="">
                             <div class="caption">
                          
-                                <h4><p>Canchas de basquetbol N°1</p>
-                                </h4>
-                                <p>$15.000 CLP</p>
+                                <h4><p> <?php echo $a[0] ?> </p> </h4>
+                                <p>$<?php echo $b[0]?> CLP</p>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Horario</button>
 
 				<!-- Modal -->
@@ -112,7 +128,7 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Cancha de Basquetbol N°1</h4>
+					<h4 class="modal-title"><?php echo $a[0] ?></h4>
 				      </div>
 				      <div class="modal-body">
 
@@ -188,7 +204,7 @@
 
 				      </div>
 				      <div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 				      </div>
 				    </div>
 
@@ -201,12 +217,12 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="img/LOJGyng.jpg" alt="">
+                            <img src="img/canchas-de-tenis-00.jpg" alt="">
                             <div class="caption">
                                 
-                                <h4><p>Canchas de basquetbol N°2</p>
+                                <h4><p><?php echo $a[1] ?></p>
                                 </h4>
-                                <p>$15.000 CLP</p>
+                                <p>$<?php echo $b[1] ?> CLP</p>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Horario</button>
 
 				<!-- Modal -->
@@ -217,7 +233,7 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Cancha de Basquetbol N°2</h4>
+					<h4 class="modal-title"><?php echo $a[1] ?></h4>
 				      </div>
 				      <div class="modal-body">
 
@@ -306,12 +322,12 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="img/canchavoley.jpg" alt="">
+                            <img src="img/varias 294.jpg" alt="">
                             <div class="caption">
                                 
-                                <h4><p>Cancha de Voleibol N°1</p>
+                                <h4><p><?php echo $a[2] ?></p>
                                 </h4>
-                                <p>$10.000 CLP</p>
+                                <p>$ <?php echo $b[2] ?> CLP</p>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Horario</button>
 
 				<!-- Modal -->
@@ -322,7 +338,7 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Cancha de Voleibol N°1</h4>
+					<h4 class="modal-title"><?php echo $a[2] ?></h4>
 				      </div>
 				      <div class="modal-body">
 
@@ -411,12 +427,12 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="img/volly.jpg" alt="">
+                            <img src="img/New-Ave-7.jpg" alt="">
                             <div class="caption">
                                 
-                                <h4><p>Cancha de Voleibol N°2</p>
+                                <h4><p><?php echo $a[3] ?></p>
                                 </h4>
-                                <p>$10.000 CLP</p>
+                                <p>$ <?php echo $b[3] ?> CLP</p>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Horario</button>
 
 				<!-- Modal -->
@@ -427,7 +443,7 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Cancha de Voleibol N°2</h4>
+					<h4 class="modal-title"><?php echo $a[3] ?></h4>
 				      </div>
 				      <div class="modal-body">
 
